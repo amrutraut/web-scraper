@@ -1,36 +1,30 @@
 package com.sainsbury.web.scraper;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Unit test for web scraper App.
  */
 public class WebScraperAppTest 
-    extends TestCase
 {
+	@Before
+	public void setup(){
+		
+	}
+	
+	@After
+	public void teardown(){
+		
+	}
+	
     /**
-     * Create the test case
-     *
-     * @param testName name of the test case
+     * Applicaton Test :-)
      */
-    public WebScraperAppTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( WebScraperAppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
+	@Test
     public void testApp()
     {
         assertTrue( true );
