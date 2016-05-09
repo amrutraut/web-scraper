@@ -1,7 +1,8 @@
 package com.sainsbury.web.scraper;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
 
+import org.jsoup.nodes.Document;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,24 +10,24 @@ import org.junit.Test;
 /**
  * Unit test for web scraper App.
  */
-public class WebScraperAppTest 
-{
+public class WebScraperAppTest {
 	@Before
-	public void setup(){
-		
+	public void setup() {
+
 	}
-	
+
 	@After
-	public void teardown(){
-		
+	public void teardown() {
+
 	}
-	
-    /**
-     * Applicaton Test :-)
-     */
+
+	/**
+	 * Applicaton Test :-)
+	 */
 	@Test
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+	public void testApp() {
+		WebScraperApp app = new WebScraperApp();
+		Document jsoupDoc = app.scrape("");
+		assertNull(jsoupDoc);
+	}
 }
