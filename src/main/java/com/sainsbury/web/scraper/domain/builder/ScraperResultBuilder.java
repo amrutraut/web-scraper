@@ -4,6 +4,7 @@
 package com.sainsbury.web.scraper.domain.builder;
 
 import com.sainsbury.web.scraper.domain.ScraperResult;
+import com.sainsbury.web.scraper.domain.WebPage;
 
 /**
  * @author ARaut
@@ -11,9 +12,14 @@ import com.sainsbury.web.scraper.domain.ScraperResult;
  */
 public class ScraperResultBuilder implements Builder<ScraperResult> {
 
+	private WebPage webPage;
 	
-	public ScraperResultBuilder(){
-		
+	/**
+	 * field constructor
+	 * @param webPage web page info
+	 */
+	public ScraperResultBuilder(WebPage webPage){
+		this.webPage = webPage;
 	}
 	
 	/**
