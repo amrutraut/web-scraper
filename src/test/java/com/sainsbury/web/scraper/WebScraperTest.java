@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for web scraper App.
+ * Unit test for web scraper class.
+ * 
+ * @author ARaut
  */
 public class WebScraperTest {
 	
@@ -27,7 +29,7 @@ public class WebScraperTest {
 	}
 
 	/**
-	 * Applicaton Test :-)
+	 * Test if URL is scraped.
 	 * 
 	 * @throws IOException 
 	 */
