@@ -2,8 +2,9 @@ package com.sainsbury.web.scraper;
 
 import java.io.IOException;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
+import com.sainsbury.web.scraper.domain.WebPage;
 
 /**
  * <P> 
@@ -18,7 +19,9 @@ public class WebScraper
 
     public Document scrape(String url) throws IOException{
     	
-    	Document doc = Jsoup.connect(url).get();
+    	WebPage webPage = new WebPage(url);
+    	
+    	Document doc = webPage.getWebPage();
     	
     	return doc;
     }

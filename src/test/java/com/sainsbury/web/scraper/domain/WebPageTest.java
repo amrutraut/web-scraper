@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 
+import org.jsoup.HttpStatusException;
 import org.jsoup.nodes.Document;
 import org.junit.After;
 import org.junit.Before;
@@ -37,10 +38,22 @@ public class WebPageTest {
 	}
 
 	@Test
-	public void getsDocumentForURL() throws IOException {
+	public void getsDocumentForValidURL() throws Exception {
 		WebPage page = new WebPage(url);
-		Document jsoupDoc = page.getDocument();
+		Document jsoupDoc = page.getWebPage();
 		assertNotNull(jsoupDoc);
+	}
+	
+	@Test(expected = HttpStatusException.class)
+	public void getsExceptionForInvalidURL() throws Exception {
+		WebPage page = new WebPage("http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/no_such_products.html");
+		page.getWebPage();
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void getsExceptionForEmptyURL() throws Exception {
+		WebPage page = new WebPage("");
+		page.getWebPage();
 	}
 
 }

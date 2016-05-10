@@ -28,10 +28,11 @@ public class WebPage {
 		this.url = url;
 	}
 
-	public Document getDocument() throws IOException {
+	public Document getWebPage() throws IOException {
 		Document doc = Jsoup.connect(url).get();
-
 		return doc;
 	}
+	
+	
 
 }
