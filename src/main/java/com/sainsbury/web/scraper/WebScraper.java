@@ -21,7 +21,7 @@ public class WebScraper
     	
     	WebPage webPage = new WebPage(url);
     	
-    	Document doc = webPage.getWebPage();
+    	Document doc = null;
     	
     	return doc;
     }

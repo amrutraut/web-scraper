@@ -3,6 +3,9 @@
  */
 package com.sainsbury.web.scraper.util;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -13,32 +16,45 @@ import org.jsoup.select.Elements;
  */
 public class WebPageParser {
 	
-	public Document doc;
+	private Document doc;
 	
-	public WebPageParser(Document doc){
-		this.doc =doc;
-	}
-	
-	public Element getElementByClass(Document doc, String className){
-		Element el = doc.getElementsByClass(className).first();
-		return el;
+	public WebPageParser(String url) throws IOException{
+		this.doc = Jsoup.connect(url).get();
 	}
 	
-	public Element getElementByClass(Element el, String className){
-		return el.getElementsByClass(className).first();
+	public String getProductTitle(){
+		Element div = doc.getElementsByClass("productTitleDescriptionContainer").first();
+//		Element title = div.getElementsByTag("h1").first();
+		Element title = doc.getElementsByTag("h1").first();
+		System.out.println("divText: " + div.text());
+		System.out.println("titleText: " + title.text());
+		
+		return title.text();
 	}
 	
-	public Element getElementByTag(Element el, String tagName){
-		return el.getElementsByTag(tagName).first();
+	public String getProductDescription(){
+		Element desc = doc.getElementsByClass("productText").first();
+		return desc.text();
 	}
-
-	public Elements getElementsByTag(Element el, String tagName){
-		return el.getElementsByTag(tagName);
+	
+	public Double getProdcutUnitPrice(){
+		Element unitPrice = doc.getElementsByClass("pricePerUnit").first();
+		double dbUnitPrice = Double.parseDouble(unitPrice.text());
+		return dbUnitPrice;
 	}
-
-	public Elements getElementsByTag(Document doc, String tagName){
-		return doc.getElementsByTag(tagName);
+	
+	public String getProductSize(){
+		Element productSize = doc.getElementsByClass("productText").get(3);
+		return productSize.text();
 	}
-
+	
+	public Document getWebPage() {
+		return doc;
+	}
+	
+	public double getWebPageSizeInKB(){
+		double pageSize = doc.html().length() /1024;
+		return pageSize;
+	}
 	
 }
