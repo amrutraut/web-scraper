@@ -4,7 +4,9 @@ import java.io.IOException;
 
 import org.jsoup.nodes.Document;
 
+import com.sainsbury.web.scraper.domain.ScraperResult;
 import com.sainsbury.web.scraper.domain.WebPage;
+import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
 
 /**
  * <P> 
@@ -17,13 +19,14 @@ import com.sainsbury.web.scraper.domain.WebPage;
 public class WebScraper 
 {
 
-    public Document scrape(String url) throws IOException{
+    public ScraperResult scrape(String url) throws IOException{
     	
     	WebPage webPage = new WebPage(url);
     	
-    	Document doc = null;
+    	ScraperResult result = new ScraperResult();
     	
-    	return doc;
+    	
+    	return result;
     }
     
 }

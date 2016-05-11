@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sainsbury.web.scraper.domain.ScraperResult;
+
 /**
  * Unit test for web scraper class.
  * 
@@ -37,8 +39,8 @@ public class WebScraperTest {
 	@Test
 	public void scrapesURL() throws IOException {
 		WebScraper app = new WebScraper();
-		Document jsoupDoc = app.scrape(url);
-		assertNotNull(jsoupDoc);
+		ScraperResult result = app.scrape(url);
+		assertNotNull(result);
 	}
 	
 	@Test(expected = HttpStatusException.class)
