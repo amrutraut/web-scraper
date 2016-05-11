@@ -30,13 +30,7 @@ public class ProductBuilder implements Builder<Product> {
 	 * @return product info
 	 */
 	public Product build(){
-		Product product = new Product(); 
-		
-		product.setDescription(webPage.getProductDescription());
-		product.setSize(webPage.getPageSize());
-		product.setTitle(webPage.getProductTitle());
-		product.setUnit_price(webPage.getProdcutUnitPrice());
-		
+		Product product = new Product(webPage.getProductTitle(), webPage.getPageSize(), webPage.getProdcutUnitPrice(), webPage.getProductDescription()); 
 		return product;
 	}
 	
