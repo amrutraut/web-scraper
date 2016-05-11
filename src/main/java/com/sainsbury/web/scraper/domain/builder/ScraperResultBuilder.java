@@ -3,6 +3,10 @@
  */
 package com.sainsbury.web.scraper.domain.builder;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sainsbury.web.scraper.domain.Product;
 import com.sainsbury.web.scraper.domain.ScraperResult;
 import com.sainsbury.web.scraper.domain.WebPage;
 
@@ -12,14 +16,18 @@ import com.sainsbury.web.scraper.domain.WebPage;
  */
 public class ScraperResultBuilder implements Builder<ScraperResult> {
 
-	private WebPage webPage;
+	private List<WebPage> webPages;
+	
+	private List<Product> prodcutList;
+	
+	private double total;
 	
 	/**
 	 * field constructor
 	 * @param webPage web page info
 	 */
-	public ScraperResultBuilder(WebPage webPage){
-		this.webPage = webPage;
+	public ScraperResultBuilder(List<WebPage> webPages){
+		this.webPages = webPages;
 	}
 	
 	/**
@@ -31,9 +39,22 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 	 */
 	public ScraperResult build() {
 		
-		ScraperResult result = new ScraperResult();
+		ScraperResult results = new ScraperResult();
+
+		prodcutList = new ArrayList<Product>();
+		total = 0.0;
+		
+		for (WebPage webPage : webPages ){
 			
-		return result;
+			Product product = new ProductBuilder(webPage).build();
+			total = total + product.getUnit_price();
+			prodcutList.add(product);
+		}
+		
+		results.setResult(prodcutList);
+		results.setTotal(total);
+			
+		return results;
 	}
 
 }

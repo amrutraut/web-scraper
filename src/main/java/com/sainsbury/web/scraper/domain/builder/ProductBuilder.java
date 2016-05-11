@@ -3,6 +3,10 @@
  */
 package com.sainsbury.web.scraper.domain.builder;
 
+import java.io.IOException;
+
+import org.jsoup.nodes.Document;
+
 import com.sainsbury.web.scraper.domain.Product;
 import com.sainsbury.web.scraper.domain.WebPage;
 
@@ -31,6 +35,15 @@ public class ProductBuilder implements Builder<Product> {
 	 */
 	public Product build(){
 		Product product = new Product(); 
+		
+		try {
+			Document doc = webPage.getWebPage();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return product;
 	}
 	

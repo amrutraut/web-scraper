@@ -13,16 +13,16 @@ import java.util.List;
  */
 public class ScraperResult {
 
-	private List<Product> result;
+	private List<Product> results;
 	
 	private double total;
 
-	public List<Product> getResult() {
-		return result;
+	public List<Product> getResults() {
+		return results;
 	}
 
-	public void setResult(List<Product> result) {
-		this.result = result;
+	public void setResult(List<Product> results) {
+		this.results = results;
 	}
 
 	public double getTotal() {
