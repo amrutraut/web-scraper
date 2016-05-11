@@ -11,6 +11,8 @@ import com.sainsbury.web.scraper.domain.ScraperResult;
 import com.sainsbury.web.scraper.domain.WebPage;
 
 /**
+ * This class builds the Scraper Result containing list of all the products.  
+ * 
  * @author ARaut
  *
  */
