@@ -4,15 +4,16 @@
 package com.sainsbury.web.scraper.domain;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.sainsbury.web.scraper.util.WebPageParser;
 
 /**
- * This class gets all the scraped product details .
+ * This class gets all the scraped product details on the page.
  * 
  * @author ARaut
  */
-public class WebPage {
+public class ProdcutWebPage {
 
 	private WebPageParser parser;
 			
@@ -22,7 +23,7 @@ public class WebPage {
 	 * @param url to be scraped
 	 * @throws IOException 
 	 */
-	public WebPage(String url) throws IOException {
+	public ProdcutWebPage(String url) throws IOException {
 		parser = new WebPageParser(url);
 	}
 
@@ -69,6 +70,12 @@ public class WebPage {
 	 */
 	public String getPageSize(){
 		return parser.getWebPageSizeInKB();
+	}
+	
+	public List<ProdcutWebPage> getListOfProdcutLinks(){
+		
+		return null;
+		
 	}
 
 }

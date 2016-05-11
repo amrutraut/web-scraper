@@ -1,11 +1,11 @@
 package com.sainsbury.web.scraper;
 
 import java.io.IOException;
-
-import org.jsoup.nodes.Document;
+import java.util.List;
 
 import com.sainsbury.web.scraper.domain.ScraperResult;
-import com.sainsbury.web.scraper.domain.WebPage;
+import com.sainsbury.web.scraper.domain.ProdcutListWebPage;
+import com.sainsbury.web.scraper.domain.ProdcutWebPage;
 import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
 
 /**
@@ -21,10 +21,13 @@ public class WebScraper
 
     public ScraperResult scrape(String url) throws IOException{
     	
-    	WebPage webPage = new WebPage(url);
+    	ProdcutListWebPage webPage = new ProdcutListWebPage(url);
     	
-    	ScraperResult result = new ScraperResult();
+    	List<ProdcutWebPage> webPages = webPage.getListOfProdcutLinks();
     	
+    	ScraperResultBuilder resultBuilder = new ScraperResultBuilder(webPages);
+
+    	ScraperResult result = resultBuilder.build();
     	
     	return result;
     }

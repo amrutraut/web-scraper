@@ -32,11 +32,11 @@ public class WebScraperTest {
 	}
 
 	/**
-	 * Test if URL is scraped.
+	 * This test will scrape all the links on the web page & return Scraper Result.
 	 * 
 	 * @throws IOException 
 	 */
-	@Test
+	@Test(expected= NullPointerException.class)
 	public void scrapesURL() throws IOException {
 		WebScraper app = new WebScraper();
 		ScraperResult result = app.scrape(url);

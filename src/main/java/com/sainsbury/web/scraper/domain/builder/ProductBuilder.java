@@ -4,7 +4,7 @@
 package com.sainsbury.web.scraper.domain.builder;
 
 import com.sainsbury.web.scraper.domain.Product;
-import com.sainsbury.web.scraper.domain.WebPage;
+import com.sainsbury.web.scraper.domain.ProdcutWebPage;
 
 /**
  * This class will build the Product with its details
@@ -14,13 +14,13 @@ import com.sainsbury.web.scraper.domain.WebPage;
  */
 public class ProductBuilder implements Builder<Product> {
 
-	private WebPage webPage;
+	private ProdcutWebPage webPage;
 	
 	/**
 	 * field constructor
 	 * @param webPage web page info
 	 */
-	public ProductBuilder(WebPage webPage) {
+	public ProductBuilder(ProdcutWebPage webPage) {
 		this.webPage = webPage;
 	}
 
