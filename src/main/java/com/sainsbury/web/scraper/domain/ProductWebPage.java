@@ -15,7 +15,7 @@ import com.sainsbury.web.scraper.util.WebPageParser;
  */
 public class ProductWebPage {
 
-	private WebPageParser parser;
+	protected WebPageParser parser;
 			
 	/**
 	 * field constructor
@@ -70,12 +70,6 @@ public class ProductWebPage {
 	 */
 	public String getPageSize(){
 		return parser.getWebPageSizeInKB();
-	}
-	
-	public List<ProductWebPage> getListOfProdcutLinks(){
-		
-		return null;
-		
 	}
 
 }

@@ -36,7 +36,7 @@ public class WebScraperTest {
 	 * 
 	 * @throws IOException 
 	 */
-	@Test(expected= NullPointerException.class)
+	@Test()
 	public void scrapesURL() throws IOException {
 		WebScraper app = new WebScraper();
 		ScraperResult result = app.scrape(url);

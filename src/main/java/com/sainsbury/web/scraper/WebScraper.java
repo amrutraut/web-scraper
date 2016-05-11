@@ -23,7 +23,7 @@ public class WebScraper
     	
     	ProductListWebPage webPage = new ProductListWebPage(url);
     	
-    	List<ProductWebPage> webPages = webPage.getListOfProdcutLinks();
+    	List<ProductWebPage> webPages = webPage.getListOfProductPages();
     	
     	ScraperResultBuilder resultBuilder = new ScraperResultBuilder(webPages);
 

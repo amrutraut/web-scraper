@@ -10,6 +10,7 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.sainsbury.web.scraper.domain.ProductWebPage;
 
@@ -96,10 +97,25 @@ public class WebPageParser {
 		return String.valueOf(pageSize) + "kb";
 	}
 	
-	public List<ProductWebPage> getListOfProdcutLinks(){
+	/**
+	 * This method uses Jsoup to get all the prodcut pages on the Prodcut List page
+	 * 
+	 * @return List<ProductWebPage> list of all the product web pages. 
+	 * @throws IOException
+	 */
+	public List<ProductWebPage> getListOfProductPages() throws IOException{
 		List<ProductWebPage> webPages = new ArrayList<ProductWebPage>();
 		
-		return null;
+		Elements productList = doc.getElementsByClass("productInfo");
+		
+		for (Element product : productList){
+			Element anchor = product.getElementsByTag("a").first();
+			String url = anchor.attr("href");
+			ProductWebPage webPage = new ProductWebPage(url);
+			webPages.add(webPage);
+		}
+		
+		return webPages;
 		
 	}
 }

@@ -25,10 +25,13 @@ public class ProductListWebPage extends ProductWebPage{
 		super(url);
 	}
 	
-	public List<ProductWebPage> getListOfProdcutLinks(){
-		
-		return null;
-		
+	/**
+	 * This method returns list of product pages
+	 * @return
+	 * @throws IOException
+	 */
+	public List<ProductWebPage> getListOfProductPages() throws IOException{
+		return parser.getListOfProductPages();
 	}
 
 }

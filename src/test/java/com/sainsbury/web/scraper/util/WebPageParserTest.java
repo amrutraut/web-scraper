@@ -3,8 +3,10 @@
  */
 package com.sainsbury.web.scraper.util;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.io.IOException;
 
 import org.jsoup.HttpStatusException;
 import org.junit.After;
@@ -23,6 +25,8 @@ public class WebPageParserTest {
 	
 	private static final String invalidURL = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/no_such_products.html";
 	
+	private static final String productListPage = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html";
+
 	private WebPageParser parser;
 	/**
 	 * @throws java.lang.Exception
@@ -65,6 +69,13 @@ public class WebPageParserTest {
 	@Test
 	public void getsWebPageProductDescription(){
 		assertEquals("Apricots", parser.getProductDescription());
+	}
+	
+	@Test
+	public void getsListOfProductPages() throws IOException{
+		parser = new WebPageParser(productListPage);
+		
+		assertEquals(7, parser.getListOfProductPages().size());
 	}
 	
 	@Test(expected = HttpStatusException.class)
