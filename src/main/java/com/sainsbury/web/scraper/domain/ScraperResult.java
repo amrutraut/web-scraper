@@ -16,20 +16,30 @@ public class ScraperResult {
 	private List<Product> results;
 	
 	private double total;
+	
+	/**
+	 * field constructor
+	 * 
+	 * @param results list of products scraped
+	 * @param total total of al the products
+	 */
+	public ScraperResult(List<Product> results, double total) {
+		this.results = results;
+		this.total = total;
+	}
 
 	public List<Product> getResults() {
 		return results;
-	}
-
-	public void setResult(List<Product> results) {
-		this.results = results;
 	}
 
 	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
+	@Override
+	public String toString() {
+		return "ScraperResult [results=" + results + ", total=" + total + "]";
 	}
+	
+	
 }

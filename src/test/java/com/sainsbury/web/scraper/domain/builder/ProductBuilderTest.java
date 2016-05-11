@@ -3,7 +3,8 @@
  */
 package com.sainsbury.web.scraper.domain.builder;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;

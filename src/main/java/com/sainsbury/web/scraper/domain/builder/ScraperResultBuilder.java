@@ -20,8 +20,6 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 
 	private List<WebPage> webPages;
 	
-	private List<Product> prodcutList;
-	
 	private double total;
 	
 	/**
@@ -41,9 +39,7 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 	 */
 	public ScraperResult build() {
 		
-		ScraperResult results = new ScraperResult();
-
-		prodcutList = new ArrayList<Product>();
+		List<Product> prodcutList = new ArrayList<Product>();
 		total = 0.0;
 		
 		for (WebPage webPage : webPages ){
@@ -53,8 +49,7 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 			prodcutList.add(product);
 		}
 		
-		results.setResult(prodcutList);
-		results.setTotal(total);
+		ScraperResult results = new ScraperResult(prodcutList, total);
 			
 		return results;
 	}

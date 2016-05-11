@@ -20,10 +20,12 @@ public class Product {
 	private String description;
 	
 	/**
-	 * @param title
-	 * @param size
-	 * @param unit_price
-	 * @param description
+	 * field constructor
+	 * 
+	 * @param title of the product
+	 * @param size of the product page
+	 * @param unit_price of the product
+	 * @param description of the product
 	 */
 	public Product(String title, String size, double unit_price, String description) {
 		this.title = title;
