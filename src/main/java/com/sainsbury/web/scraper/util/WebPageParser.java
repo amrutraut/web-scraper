@@ -4,12 +4,10 @@
 package com.sainsbury.web.scraper.util;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 /**
  * <p>
@@ -87,11 +85,11 @@ public class WebPageParser {
 	/**
 	 * This method  uses Jsoup document to get web page size in kb
 	 * 
-	 * @return double web page size in kb
+	 * @return String web page size in kb
 	 */
-	public double getWebPageSizeInKB(){
+	public String getWebPageSizeInKB(){
 		double pageSize = doc.html().length() /1024;
-		return pageSize;
+		return String.valueOf(pageSize) + "kb";
 	}
 	
 }

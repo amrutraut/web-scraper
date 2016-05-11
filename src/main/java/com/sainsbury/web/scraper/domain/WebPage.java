@@ -65,10 +65,10 @@ public class WebPage {
 	/**
 	 * This method returns web page size in kb
 	 * 
-	 * @return double web page size in kb
+	 * @return String web page size in kb
 	 */
 	public String getPageSize(){
-		return String.valueOf(parser.getWebPageSizeInKB()) + "kb";
+		return parser.getWebPageSizeInKB();
 	}
 
 }

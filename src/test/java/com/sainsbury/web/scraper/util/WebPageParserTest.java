@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sainsbury.web.scraper.domain;
+package com.sainsbury.web.scraper.util;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
@@ -17,19 +17,19 @@ import org.junit.Test;
  * @author ARaut
  *
  */
-public class WebPageTest {
+public class WebPageParserTest {
 	
 	private static final String validURL = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/sainsburys-apricot-ripe---ready-320g.html";
 	
 	private static final String invalidURL = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/no_such_products.html";
 	
-	private WebPage page;
+	private WebPageParser parser;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		page = new WebPage(validURL);
+		parser = new WebPageParser(validURL);
 	}
 
 	/**
@@ -37,44 +37,44 @@ public class WebPageTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		page = null;
+		parser = null;
 	}
 
 	@Test
 	public void getsWebPageForValidURL() throws Exception {
 		
-		assertNotNull(page);
+		assertNotNull(parser);
 	}
 	
 	@Test
 	public void getsWebPageProductTitle(){
-		assertEquals("Sainsbury's Apricot Ripe & Ready x5", page.getProductTitle());
+		assertEquals("Sainsbury's Apricot Ripe & Ready x5", parser.getProductTitle());
 	}
 	
 	@Test
-	public void getsWebPageProductPageSize(){
-		assertNotNull(page.getPageSize());
-		assertEquals("34.0kb", page.getPageSize());
+	public void getsWebPageProductPageSizeInKB(){
+		assertNotNull(parser.getWebPageSizeInKB());
+		assertEquals("34.0kb", parser.getWebPageSizeInKB());
 	}
 	
 	@Test
 	public void getsWebPageProductUnitPrice(){
-		assertEquals(3.50, page.getProdcutUnitPrice(),0.0);
+		assertEquals(3.50, parser.getProdcutUnitPrice(),0.0);
 	}
 	
 	@Test
 	public void getsWebPageProductDescription(){
-		assertEquals("Apricots", page.getProductDescription());
+		assertEquals("Apricots", parser.getProductDescription());
 	}
 	
 	@Test(expected = HttpStatusException.class)
 	public void getsExceptionForInvalidURL() throws Exception {
-		page = new WebPage(invalidURL);
+		parser = new WebPageParser(invalidURL);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void getsExceptionForEmptyURL() throws Exception {
-		page = new WebPage("");
+		parser = new WebPageParser("");
 	}
 
 }
