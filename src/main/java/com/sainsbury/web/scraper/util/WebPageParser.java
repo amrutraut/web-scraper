@@ -4,6 +4,7 @@
 package com.sainsbury.web.scraper.util;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,12 +39,7 @@ public class WebPageParser {
 	 */
 	public String getProductTitle(){
 		Element div = doc.getElementsByClass("productTitleDescriptionContainer").first();
-//		Element title = div.getElementsByTag("h1").first();
-		Element title = doc.getElementsByTag("h1").first();
-		System.out.println("divText: " + div.text());
-		System.out.println("titleText: " + title.text());
-		
-		return title.text();
+		return div.text();
 	}
 	
 	/**
@@ -62,8 +58,10 @@ public class WebPageParser {
 	 * @return double product unit price
 	 */
 	public double getProdcutUnitPrice(){
-		Element unitPrice = doc.getElementsByClass("pricePerUnit").first();
-		double dbUnitPrice = Double.parseDouble(unitPrice.text());
+		Element elUnitPrice = doc.getElementsByClass("pricePerUnit").first();
+		String strUnitPrice = elUnitPrice.text();
+		strUnitPrice = strUnitPrice.replaceAll("[^0-9.]+", "");
+		double dbUnitPrice = Double.parseDouble(strUnitPrice);
 		return dbUnitPrice;
 	}
 	
