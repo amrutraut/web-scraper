@@ -5,10 +5,7 @@ package com.sainsbury.web.scraper.domain;
 
 import java.io.IOException;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import com.sainsbury.web.scraper.util.WebPageParser;
 
 /**
  * This class holds all the web page details to be scraped.
@@ -17,45 +14,36 @@ import org.jsoup.select.Elements;
  */
 public class WebPage {
 
-	private String url;
-
-	private Document doc;
-
+	private WebPageParser parser;
+			
 	/**
 	 * field constructor
 	 * 
 	 * @param url to be scraped
+	 * @throws IOException 
 	 */
-	public WebPage(String url) {
-		this.url = url;
+	public WebPage(String url) throws IOException {
+		parser = new WebPageParser(url);
 	}
 
-	public Document getWebPage() throws IOException {
-		Document doc = Jsoup.connect(url).get();
-		return doc;
+	public String getProductTitle(){
+		return parser.getProductTitle();
 	}
 	
-	public Element getElementByClass(Document doc, String className){
-		Element el = doc.getElementsByClass(className).first();
-		return el;
+	public String getProductDescription(){
+		return parser.getProductDescription();
 	}
 	
-	public Element getElementByClass(Element el, String className){
-		return el.getElementsByClass(className).first();
+	public Double getProdcutUnitPrice(){
+		return parser.getProdcutUnitPrice();
 	}
 	
-	public Element getElementByTag(Element el, String tagName){
-		return el.getElementsByTag(tagName).first();
-	}
-
-	public Elements getElementsByTag(Element el, String tagName){
-		return el.getElementsByTag(tagName);
-	}
-
-	public Elements getElementsByTag(Document doc, String tagName){
-		return doc.getElementsByTag(tagName);
+	public String getProductSize(){
+		return parser.getProductSize();
 	}
 	
-	
+	public String getPageSize(){
+		return String.valueOf(parser.getWebPageSizeInKB());
+	}
 
 }
