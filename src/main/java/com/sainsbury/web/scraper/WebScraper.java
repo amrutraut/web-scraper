@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.sainsbury.web.scraper.domain.ScraperResult;
-import com.sainsbury.web.scraper.domain.ProdcutListWebPage;
-import com.sainsbury.web.scraper.domain.ProdcutWebPage;
+import com.sainsbury.web.scraper.domain.ProductListWebPage;
+import com.sainsbury.web.scraper.domain.ProductWebPage;
 import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
 
 /**
@@ -21,9 +21,9 @@ public class WebScraper
 
     public ScraperResult scrape(String url) throws IOException{
     	
-    	ProdcutListWebPage webPage = new ProdcutListWebPage(url);
+    	ProductListWebPage webPage = new ProductListWebPage(url);
     	
-    	List<ProdcutWebPage> webPages = webPage.getListOfProdcutLinks();
+    	List<ProductWebPage> webPages = webPage.getListOfProdcutLinks();
     	
     	ScraperResultBuilder resultBuilder = new ScraperResultBuilder(webPages);
 

@@ -13,7 +13,7 @@ import com.sainsbury.web.scraper.util.WebPageParser;
  * 
  * @author ARaut
  */
-public class ProdcutWebPage {
+public class ProductWebPage {
 
 	private WebPageParser parser;
 			
@@ -23,7 +23,7 @@ public class ProdcutWebPage {
 	 * @param url to be scraped
 	 * @throws IOException 
 	 */
-	public ProdcutWebPage(String url) throws IOException {
+	public ProductWebPage(String url) throws IOException {
 		parser = new WebPageParser(url);
 	}
 
@@ -72,7 +72,7 @@ public class ProdcutWebPage {
 		return parser.getWebPageSizeInKB();
 	}
 	
-	public List<ProdcutWebPage> getListOfProdcutLinks(){
+	public List<ProductWebPage> getListOfProdcutLinks(){
 		
 		return null;
 		

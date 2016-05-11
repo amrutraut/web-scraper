@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.sainsbury.web.scraper.domain.Product;
 import com.sainsbury.web.scraper.domain.ScraperResult;
-import com.sainsbury.web.scraper.domain.ProdcutWebPage;
+import com.sainsbury.web.scraper.domain.ProductWebPage;
 
 /**
  * This class builds the Scraper Result containing list of all the products.  
@@ -18,7 +18,7 @@ import com.sainsbury.web.scraper.domain.ProdcutWebPage;
  */
 public class ScraperResultBuilder implements Builder<ScraperResult> {
 
-	private List<ProdcutWebPage> webPages;
+	private List<ProductWebPage> webPages;
 	
 	private double total;
 	
@@ -26,7 +26,7 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 	 * field constructor
 	 * @param webPage web page info
 	 */
-	public ScraperResultBuilder(List<ProdcutWebPage> webPages){
+	public ScraperResultBuilder(List<ProductWebPage> webPages){
 		this.webPages = webPages;
 	}
 	
@@ -42,7 +42,7 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 		List<Product> prodcutList = new ArrayList<Product>();
 		total = 0.0;
 		
-		for (ProdcutWebPage webPage : webPages ){
+		for (ProductWebPage webPage : webPages ){
 			
 			Product product = new ProductBuilder(webPage).build();
 			total = total + product.getUnit_price();

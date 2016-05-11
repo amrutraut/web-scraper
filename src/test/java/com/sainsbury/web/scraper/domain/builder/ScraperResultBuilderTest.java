@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import com.sainsbury.web.scraper.domain.Product;
 import com.sainsbury.web.scraper.domain.ScraperResult;
-import com.sainsbury.web.scraper.domain.ProdcutWebPage;
+import com.sainsbury.web.scraper.domain.ProductWebPage;
 
 /**
  * Unit test for ScraperResultBuilder
@@ -27,7 +27,7 @@ public class ScraperResultBuilderTest {
 	
 	private ScraperResultBuilder builder;
 	
-	private List<ProdcutWebPage> webPages;
+	private List<ProductWebPage> webPages;
 	
 	private ScraperResult expectedResult;
 	
@@ -40,9 +40,9 @@ public class ScraperResultBuilderTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		webPages = new ArrayList<ProdcutWebPage>();
-		webPages.add(new ProdcutWebPage(apricotURL));
-		webPages.add(new ProdcutWebPage(avocadoURL));
+		webPages = new ArrayList<ProductWebPage>();
+		webPages.add(new ProductWebPage(apricotURL));
+		webPages.add(new ProductWebPage(avocadoURL));
 		
 		builder = new ScraperResultBuilder(webPages);
 		

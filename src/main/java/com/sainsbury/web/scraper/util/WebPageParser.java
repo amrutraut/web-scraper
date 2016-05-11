@@ -4,13 +4,14 @@
 package com.sainsbury.web.scraper.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import com.sainsbury.web.scraper.domain.ProdcutWebPage;
+import com.sainsbury.web.scraper.domain.ProductWebPage;
 
 /**
  * <p>
@@ -95,8 +96,9 @@ public class WebPageParser {
 		return String.valueOf(pageSize) + "kb";
 	}
 	
-	public List<ProdcutWebPage> getListOfProdcutLinks(){
-	
+	public List<ProductWebPage> getListOfProdcutLinks(){
+		List<ProductWebPage> webPages = new ArrayList<ProductWebPage>();
+		
 		return null;
 		
 	}

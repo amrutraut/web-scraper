@@ -13,7 +13,7 @@ import com.sainsbury.web.scraper.util.WebPageParser;
  * 
  * @author ARaut
  */
-public class ProdcutListWebPage extends ProdcutWebPage{
+public class ProductListWebPage extends ProductWebPage{
 
 	/**
 	 * field constructor
@@ -21,11 +21,11 @@ public class ProdcutListWebPage extends ProdcutWebPage{
 	 * @param url to be scraped
 	 * @throws IOException 
 	 */
-	public ProdcutListWebPage(String url) throws IOException {
+	public ProductListWebPage(String url) throws IOException {
 		super(url);
 	}
 	
-	public List<ProdcutWebPage> getListOfProdcutLinks(){
+	public List<ProductWebPage> getListOfProdcutLinks(){
 		
 		return null;
 		
