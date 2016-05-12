@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.sainsbury.web.scraper.domain.ScraperResult;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sainsbury.web.scraper.domain.ProductListWebPage;
 import com.sainsbury.web.scraper.domain.ProductWebPage;
 import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
@@ -16,11 +18,16 @@ import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
  *</p>
  * @author ARaut
  */
-public class WebScraper 
+public abstract class WebScraper 
 {
 
-    public ScraperResult scrape(String url) throws IOException{
-    	
+    public static String scrape(String url) throws IOException {
+    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    	String jsonString = gson.toJson(getScraperResult(url)); 
+    	return jsonString;
+    }
+    
+    private static ScraperResult getScraperResult(String url) throws IOException{
     	ProductListWebPage webPage = new ProductListWebPage(url);
     	
     	List<ProductWebPage> webPages = webPage.getListOfProductPages();
