@@ -16,9 +16,13 @@ import org.junit.Test;
  * 
  * @author ARaut
  */
-public class WebScraperTest {
+public class WebScraperTest extends JsonSchemaValidatorTest{
 
 	private static final String url = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html";
+	
+	public WebScraperTest() {
+		super("WebScraper_Schema.json");
+	}
 
 	@Before
 	public void setup() {
@@ -28,11 +32,6 @@ public class WebScraperTest {
 	@After
 	public void teardown() {
 
-	}
-
-	private String readFile(String fileName) throws IOException{
-		String json = IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream(fileName),"UTF-8");
-		return json;
 	}
 
 	/**
@@ -47,6 +46,12 @@ public class WebScraperTest {
 		String jsonString = WebScraper.scrape(url);
 		assertNotNull(jsonString);
 		assertEquals(expectedJson, jsonString);
+	}
+	
+	@Test()
+	public void validateScrapeResult() throws Exception {
+		String jsonString = WebScraper.scrape(url);
+		assertValidJson(jsonString);
 	}
 	
 	//TODO: add Json schema validation

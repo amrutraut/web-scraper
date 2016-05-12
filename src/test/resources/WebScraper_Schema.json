@@ -14,7 +14,7 @@
             "type": "string"
           },
           "unit_price": {
-            "type": "integer"
+            "type": "number"
           },
           "description": {
             "type": "string"
