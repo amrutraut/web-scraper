@@ -8,7 +8,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sainsbury.web.scraper.util.WebPageParser;
+import com.sainsbury.web.scraper.parser.WebPageParser;
 
 /**
  * This class gets all the scraped product details on the page.

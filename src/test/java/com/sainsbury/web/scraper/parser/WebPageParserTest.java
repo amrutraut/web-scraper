@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sainsbury.web.scraper.util;
+package com.sainsbury.web.scraper.parser;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,6 +12,8 @@ import org.jsoup.HttpStatusException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.sainsbury.web.scraper.parser.WebPageParser;
 
 /**
  * Unit test for WebPage class

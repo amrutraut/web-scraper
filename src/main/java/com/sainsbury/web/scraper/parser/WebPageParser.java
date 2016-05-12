@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sainsbury.web.scraper.util;
+package com.sainsbury.web.scraper.parser;
 
 import java.io.IOException;
 import java.util.ArrayList;

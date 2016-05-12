@@ -14,46 +14,44 @@ import com.sainsbury.web.scraper.domain.ScraperResult;
 import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
 
 /**
- * <P> 
- * This class scrapes  web pages using Jsoup lib. It will in essence use the URL passed to it & fetch that HTML into a Jsoup  
- * Document. Once it has Jsoup document, it will scrape through all the product links & return the json array 
- * containing product info in response.
- *</p>
+ * <P>
+ * This class scrapes web pages using Jsoup lib. It will in essence use the URL
+ * passed to it & fetch that HTML into a Jsoup Document. Once it has Jsoup
+ * document, it will scrape through all the product links & return the json
+ * array containing product info in response.
+ * </p>
+ * 
  * @author ARaut
  */
-public abstract class WebScraper 
-{
+public abstract class WebScraper {
 	private static final Logger LOGGER = LoggerFactory.getLogger(WebScraper.class);
 
-    public static String scrape(String url) throws IOException {
-    	LOGGER.debug("Inside web scraper");
-    	
-    	// using gson to create json output from Scraper Result
-    	Gson gson = new GsonBuilder().
-    			disableHtmlEscaping().
-    			setPrettyPrinting().
-    			create();
-    	String jsonString = gson.toJson(getScraperResult(url));
-    	
-    	LOGGER.debug("finished scraping");
-    	return jsonString;
-    }
-    
-    private static ScraperResult getScraperResult(String url) throws IOException{
-    	
-    	LOGGER.debug("Getting Scrape Results");
-    	
-    	ProductListWebPage webPage = new ProductListWebPage(url);
-    	
-    	List<ProductWebPage> webPages = webPage.getListOfProductPages();
-    	
-    	ScraperResultBuilder resultBuilder = new ScraperResultBuilder(webPages);
+	public static String scrape(String url) throws IOException {
+		LOGGER.debug("Inside web scraper");
 
-    	ScraperResult result = resultBuilder.build();
-    	
-    	LOGGER.debug("Received scraper result");
-    	
-    	return result;
-    }
-    
+		// using gson to create json output from Scraper Result
+		Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
+		String jsonString = gson.toJson(getScraperResult(url));
+
+		LOGGER.debug("finished scraping");
+		return jsonString;
+	}
+
+	private static ScraperResult getScraperResult(String url) throws IOException {
+
+		LOGGER.debug("Getting Scrape Results");
+
+		ProductListWebPage webPage = new ProductListWebPage(url);
+
+		List<ProductWebPage> webPages = webPage.getListOfProductPages();
+
+		ScraperResultBuilder resultBuilder = new ScraperResultBuilder(webPages);
+
+		ScraperResult result = resultBuilder.build();
+
+		LOGGER.debug("Received scraper result");
+
+		return result;
+	}
+
 }
