@@ -29,7 +29,10 @@ public abstract class WebScraper
     	LOGGER.debug("Inside web scraper");
     	
     	// using gson to create json output from Scraper Result
-    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    	Gson gson = new GsonBuilder().
+    			disableHtmlEscaping().
+    			setPrettyPrinting().
+    			create();
     	String jsonString = gson.toJson(getScraperResult(url));
     	
     	LOGGER.debug("finished scraping");
