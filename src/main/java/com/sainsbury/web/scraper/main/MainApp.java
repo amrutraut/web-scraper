@@ -32,8 +32,8 @@ public class MainApp {
 
 		String json;
 
-		if (args.length >= 1) {
-			url = args[1];
+		if (args.length == 1) {
+			url = args[0];
 			LOGGER.debug("url: {} supplied at command line.", url);
 		}
 
