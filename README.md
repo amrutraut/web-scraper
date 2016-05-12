@@ -1,9 +1,9 @@
-Web-Scraper Application -
+###Web-Scraper Application -
 
 This is console application that scrapes the Sainsbury’s grocery site - Ripe Fruits page and returns a JSON array of all the
 products on the page.
 
-Dependencies - 
+####Dependencies - 
 - Jsoup 1.9.1
 - Json-Schema-Validator 2.2.3
 - Gson 2.6.2
@@ -13,7 +13,7 @@ Dependencies -
 - junit 4.11
 
 
-Package Structure -
+####Package Structure -
 - src/main/java - All application classes.
   - src/main/java/com/sainsbury/web/scraper - WebScraper class, 
   - src/main/java/com/sainsbury/web/scraper/domain - All the application domain classes.
@@ -30,7 +30,7 @@ Package Structure -
 
 - src/test/resources - All resources used in tests.
 
-Building Local Copy -
+####Building Local Copy -
 
 Get the local copy of the project using below command -
 - git clone git@github.com:amrutraut/web-scraper.git
@@ -38,25 +38,25 @@ Get the local copy of the project using below command -
 To build the app locally, use the below maven goal under /web-scraper -
 - mvn -U package
 
-Running Tests -
+####Running Tests -
 
 To run all the test run the following maven goal under /web-scraper - 
-mvn -U test
+- mvn -U test
 
-Running App -
+####Running App -
 
 To run the app, use the following command on base directory of the project i.e. web-scraper -
-java -jar target/web-scraper-0.0.1-SNAPSHOT.jar
+- java -jar target/web-scraper-0.0.1-SNAPSHOT.jar
 
 The project has assembly plugin, which builds application jar with all the dependencies. You can copy this from /target folder to your desired location & run below command -
-java -jar web-scraper-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
+- java -jar web-scraper-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
 
 There is also an option to provide url to be scraped from command line. Run the run the following command replacing the <url>
 
-From /target folder -
-java -jar target/web-scraper-0.0.1-SNAPSHOT.jar <url>
+######From /target folder -
+- java -jar target/web-scraper-0.0.1-SNAPSHOT.jar <url>
 
-With jar having all the dependencies -
-java -jar web-scraper-0.0.1-SNAPSHOT-jar-with-dependencies.jar <url>
+######With jar having all the dependencies -
+- java -jar web-scraper-0.0.1-SNAPSHOT-jar-with-dependencies.jar <url>
 
 
