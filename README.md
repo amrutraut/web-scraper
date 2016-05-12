@@ -33,7 +33,7 @@ Package Structure -
 Building Local Copy -
 
 Get the local copy of the project using below command -
-- git clone git@github.com:amrutraut/webscraper.git
+- git clone git@github.com:amrutraut/web-scraper.git
 
 To build the app locally, use the below maven goal under /web-scraper -
 - mvn -U package
