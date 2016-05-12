@@ -11,6 +11,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sainsbury.web.scraper.domain.ProductWebPage;
 
@@ -23,6 +25,26 @@ import com.sainsbury.web.scraper.domain.ProductWebPage;
  */
 public class WebPageParser {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebPageParser.class);
+	
+	private static final String productTitleClass = "productTitleDescriptionContainer";
+	
+	private static final String productDescriptionClass = "productText";
+	
+	private static final String productSizeClass = "productText";
+	
+	private static final String productUnitPriceClass = "pricePerUnit";
+	
+	private static int productUnitPriceIndex = 3;
+	
+	private static final String productListClass = "productInfo";
+	
+	private static final String productLinkTag = "a";
+	
+	private static final String productLinkAttribute = "href";
+	
+	private static final String extractUnitPriceRegEx = "[^0-9.]+";
+	
 	private Document doc;
 	
 	/**
@@ -32,6 +54,7 @@ public class WebPageParser {
 	 * @throws IOException when not able to connect to given url
 	 */
 	public WebPageParser(String url) throws IOException{
+		// use Jsoup to get web page for the url
 		this.doc = Jsoup.connect(url).get();
 	}
 	
@@ -41,7 +64,8 @@ public class WebPageParser {
 	 * @return String product title
 	 */
 	public String getProductTitle(){
-		Element div = doc.getElementsByClass("productTitleDescriptionContainer").first();
+		Element div = doc.getElementsByClass(productTitleClass).first();
+		LOGGER.debug("Product Title: {}", div.text());
 		return div.text();
 	}
 	
@@ -51,7 +75,8 @@ public class WebPageParser {
 	 * @return String product description
 	 */
 	public String getProductDescription(){
-		Element desc = doc.getElementsByClass("productText").first();
+		Element desc = doc.getElementsByClass(productDescriptionClass).first();
+		LOGGER.debug("Product Description: {}", desc.text());
 		return desc.text();
 	}
 	
@@ -61,10 +86,19 @@ public class WebPageParser {
 	 * @return double product unit price
 	 */
 	public double getProdcutUnitPrice(){
-		Element elUnitPrice = doc.getElementsByClass("pricePerUnit").first();
+		Element elUnitPrice = doc.getElementsByClass(productUnitPriceClass).first();
+
+		// get the unit price as string 
 		String strUnitPrice = elUnitPrice.text();
-		strUnitPrice = strUnitPrice.replaceAll("[^0-9.]+", "");
+		LOGGER.debug("Product UnitPrice before extracting non-digits: {}", strUnitPrice);
+		
+		// replace all the non-digits from unit price
+		strUnitPrice = strUnitPrice.replaceAll(extractUnitPriceRegEx, "");
+		
+		// convert unit price to double
 		double dbUnitPrice = Double.parseDouble(strUnitPrice);
+		LOGGER.debug("Product UnitPrice: {}", dbUnitPrice);
+		
 		return dbUnitPrice;
 	}
 	
@@ -74,7 +108,8 @@ public class WebPageParser {
 	 * @return String product size
 	 */
 	public String getProductSize(){
-		Element productSize = doc.getElementsByClass("productText").get(3);
+		Element productSize = doc.getElementsByClass(productSizeClass).get(productUnitPriceIndex);
+		LOGGER.debug("Product Size: {}", productSize.text());
 		return productSize.text();
 	}
 	
@@ -93,8 +128,14 @@ public class WebPageParser {
 	 * @return String web page size in kb
 	 */
 	public String getWebPageSizeInKB(){
+		// get document length as html to calculate size in kb
 		double pageSize = doc.html().length() /1024;
-		return String.valueOf(pageSize) + "kb";
+		
+		// append kb to page size
+		String strPageSize = String.valueOf(pageSize) + "kb";
+		LOGGER.debug("Page Size In KB:  {}", strPageSize);
+		
+		return strPageSize;
 	}
 	
 	/**
@@ -106,16 +147,25 @@ public class WebPageParser {
 	public List<ProductWebPage> getListOfProductPages() throws IOException{
 		List<ProductWebPage> webPages = new ArrayList<ProductWebPage>();
 		
-		Elements productList = doc.getElementsByClass("productInfo");
+		LOGGER.debug("Getting the list of prodcut web page");
 		
+		// get all the product listed on the page 
+		Elements productList = doc.getElementsByClass(productListClass);
+		
+		// get the product page for each link in the product list
 		for (Element product : productList){
-			Element anchor = product.getElementsByTag("a").first();
-			String url = anchor.attr("href");
+			// get the product page link tag
+			Element anchor = product.getElementsByTag(productLinkTag).first();
+
+			// get the product link
+			String url = anchor.attr(productLinkAttribute);
+			
+			LOGGER.debug("Getting the prodcut web page for link: {}", url);
+			// get the product web page for the link
 			ProductWebPage webPage = new ProductWebPage(url);
 			webPages.add(webPage);
 		}
 		
 		return webPages;
-		
 	}
 }

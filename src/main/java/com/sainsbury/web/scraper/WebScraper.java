@@ -3,11 +3,14 @@ package com.sainsbury.web.scraper;
 import java.io.IOException;
 import java.util.List;
 
-import com.sainsbury.web.scraper.domain.ScraperResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sainsbury.web.scraper.domain.ProductListWebPage;
 import com.sainsbury.web.scraper.domain.ProductWebPage;
+import com.sainsbury.web.scraper.domain.ScraperResult;
 import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
 
 /**
@@ -20,14 +23,23 @@ import com.sainsbury.web.scraper.domain.builder.ScraperResultBuilder;
  */
 public abstract class WebScraper 
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebScraper.class);
 
     public static String scrape(String url) throws IOException {
+    	LOGGER.debug("Inside web scraper");
+    	
+    	// using gson to create json output from Scraper Result
     	Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    	String jsonString = gson.toJson(getScraperResult(url)); 
+    	String jsonString = gson.toJson(getScraperResult(url));
+    	
+    	LOGGER.debug("finished scraping");
     	return jsonString;
     }
     
     private static ScraperResult getScraperResult(String url) throws IOException{
+    	
+    	LOGGER.debug("Getting Scrape Results");
+    	
     	ProductListWebPage webPage = new ProductListWebPage(url);
     	
     	List<ProductWebPage> webPages = webPage.getListOfProductPages();
@@ -35,6 +47,8 @@ public abstract class WebScraper
     	ScraperResultBuilder resultBuilder = new ScraperResultBuilder(webPages);
 
     	ScraperResult result = resultBuilder.build();
+    	
+    	LOGGER.debug("Received scraper result");
     	
     	return result;
     }

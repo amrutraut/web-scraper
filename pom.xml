@@ -21,14 +21,14 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.9.1</version>
 		</dependency>
-		
+
 		<!-- json-schema-validator: validate json against schema -->
 		<dependency>
 			<groupId>com.github.fge</groupId>
 			<artifactId>json-schema-validator</artifactId>
 			<version>2.2.3</version>
 		</dependency>
-		
+
 		<!-- commons-io: IO utility -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -43,7 +43,19 @@
 			<version>2.6.2</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- slf4j: log4j implementation & logging dependencies -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

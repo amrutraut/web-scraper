@@ -6,7 +6,8 @@ package com.sainsbury.web.scraper.domain;
 import java.io.IOException;
 import java.util.List;
 
-import com.sainsbury.web.scraper.util.WebPageParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class gets all the product to be scraped on the page.
@@ -15,6 +16,7 @@ import com.sainsbury.web.scraper.util.WebPageParser;
  */
 public class ProductListWebPage extends ProductWebPage{
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductListWebPage.class);
 	/**
 	 * field constructor
 	 * 
@@ -31,6 +33,7 @@ public class ProductListWebPage extends ProductWebPage{
 	 * @throws IOException
 	 */
 	public List<ProductWebPage> getListOfProductPages() throws IOException{
+		LOGGER.debug("Getting list of products");
 		return parser.getListOfProductPages();
 	}
 

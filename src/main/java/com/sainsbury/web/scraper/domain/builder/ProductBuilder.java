@@ -3,6 +3,9 @@
  */
 package com.sainsbury.web.scraper.domain.builder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.sainsbury.web.scraper.domain.Product;
 import com.sainsbury.web.scraper.domain.ProductWebPage;
 
@@ -13,6 +16,8 @@ import com.sainsbury.web.scraper.domain.ProductWebPage;
  *
  */
 public class ProductBuilder implements Builder<Product> {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductBuilder.class);
 
 	private ProductWebPage webPage;
 	
@@ -31,6 +36,7 @@ public class ProductBuilder implements Builder<Product> {
 	 */
 	public Product build(){
 		Product product = new Product(webPage.getProductTitle(), webPage.getPageSize(), webPage.getProdcutUnitPrice(), webPage.getProductDescription()); 
+		LOGGER.debug("Product Info: {}", product.toString());
 		return product;
 	}
 	

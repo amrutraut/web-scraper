@@ -4,7 +4,9 @@
 package com.sainsbury.web.scraper.domain;
 
 import java.io.IOException;
-import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sainsbury.web.scraper.util.WebPageParser;
 
@@ -14,6 +16,8 @@ import com.sainsbury.web.scraper.util.WebPageParser;
  * @author ARaut
  */
 public class ProductWebPage {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductWebPage.class);
 
 	protected WebPageParser parser;
 			
@@ -33,6 +37,7 @@ public class ProductWebPage {
 	 * @return String product title
 	 */
 	public String getProductTitle(){
+		LOGGER.debug("Getting prodcut tilte");
 		return parser.getProductTitle();
 	}
 	
@@ -42,6 +47,7 @@ public class ProductWebPage {
 	 * @return String product description
 	 */
 	public String getProductDescription(){
+		LOGGER.debug("Getting prodcut description");
 		return parser.getProductDescription();
 	}
 	
@@ -51,6 +57,7 @@ public class ProductWebPage {
 	 * @return double product unit price
 	 */
 	public double getProdcutUnitPrice(){
+		LOGGER.debug("Getting prodcut unit price");
 		return parser.getProdcutUnitPrice();
 	}
 	
@@ -60,6 +67,7 @@ public class ProductWebPage {
 	 * @return String product size
 	 */
 	public String getProductSize(){
+		LOGGER.debug("Getting prodcut size");
 		return parser.getProductSize();
 	}
 	
@@ -69,6 +77,7 @@ public class ProductWebPage {
 	 * @return String web page size in kb
 	 */
 	public String getPageSize(){
+		LOGGER.debug("Getting page size");
 		return parser.getWebPageSizeInKB();
 	}
 
