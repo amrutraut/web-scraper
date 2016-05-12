@@ -3,6 +3,7 @@
  */
 package com.sainsbury.web.scraper.domain.builder;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class ScraperResultBuilder implements Builder<ScraperResult> {
 			total = total + product.getUnit_price();
 			prodcutList.add(product);
 		}
+		
+		//TODO : put some comments
+		total = new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		
 		ScraperResult results = new ScraperResult(prodcutList, total);
 			
